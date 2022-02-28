@@ -3,9 +3,8 @@ package it.training.spring.boottwo.api;
 import it.training.spring.boottwo.PeopleRepository;
 import it.training.spring.boottwo.model.People;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -35,5 +34,22 @@ public class ApiController {
     @GetMapping("findAll")
     public List<People> findAll() {
         return (List) peopleRepository.findAll();
+    }
+
+    @GetMapping("people/{id}")
+    public ResponseEntity<People> findById(@PathVariable("id") Long id) {
+        if (peopleRepository.existsById(id)) {
+            return ResponseEntity.ok(peopleRepository.findById(id).get());
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @GetMapping("testParam")
+    public String testParam(@RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName, @RequestHeader("example") String example) {
+        System.out.println("firstName: "+firstName);
+        System.out.println("lastName: "+lastName);
+        System.out.println("example: "+example);
+        return "Hello, "+firstName+" "+lastName+"!";
     }
 }
