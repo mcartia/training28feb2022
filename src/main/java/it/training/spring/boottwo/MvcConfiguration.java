@@ -11,7 +11,7 @@ import java.util.List;
 @Configuration
 public class MvcConfiguration implements WebMvcConfigurer {
 
-    @Override
+    /*@Override
     public void configureMessageConverters(List<HttpMessageConverter<?>> messageConverters) {
         MarshallingHttpMessageConverter xmlConverter = new MarshallingHttpMessageConverter();
 
@@ -20,6 +20,6 @@ public class MvcConfiguration implements WebMvcConfigurer {
         xmlConverter.setUnmarshaller(xstreamMarshaller);
 
         messageConverters.add(xmlConverter);
-    }
+    }*/
 
 }

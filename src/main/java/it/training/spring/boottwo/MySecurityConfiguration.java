@@ -34,6 +34,9 @@ public class MySecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Autowired
     CustomUserDetailService cuService;
 
+    @Autowired
+    CustomAuthenticationProvider customAuthenticationProvider;
+
     @Override
     public void configure(HttpSecurity httpSec) throws Exception {
         httpSec.authorizeRequests()
@@ -77,7 +80,9 @@ public class MySecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .password(passwordEncoder.encode("12345678"))
                 .roles("USER");*/
 
-        auth.userDetailsService(cuService);
+        //auth.userDetailsService(cuService);
+        customAuthenticationProvider.passwordEncoder = passwordEncoder;
+        auth.authenticationProvider(customAuthenticationProvider);
     }
 
     @Bean
