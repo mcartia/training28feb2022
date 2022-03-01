@@ -4,16 +4,14 @@ import it.training.spring.boottwo.PeopleGenerator;
 import it.training.spring.boottwo.PeopleRepository;
 import it.training.spring.boottwo.model.People;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.shell.standard.ShellComponent;
-import org.springframework.shell.standard.ShellMethod;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.Arrays;
 import java.util.List;
 
-@ShellComponent
+//@ShellComponent
 public class CliComponent {
-
+/*
     @Autowired
     PeopleGenerator peopleGenerator;
 
@@ -43,5 +41,5 @@ public class CliComponent {
             System.out.println("> "+p);
         }
     }
-
+*/
 }
